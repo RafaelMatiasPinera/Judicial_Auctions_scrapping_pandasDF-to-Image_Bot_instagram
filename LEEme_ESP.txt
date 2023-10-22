@@ -1,0 +1,60 @@
+Proyecto Web-Scrapping Subastas Judiciales_pandasDFtoImage_Bot_instagram
+
+	OBJETO Y FUNCIONALIDAD:
+La idea del programa es acercar a la gente la información sobre las subastas judiciales, para que así puedan tomar conocimiento 
+de los bienes y precios base. 
+De este modo podrían surgir más cantidad de personas interesadas en los bienes, lo que beneficiaría a 
+los acreedores en los procesos concursales, o a las partes que esten 'haciendo' la subasta. 
+También beneficiaría a los terceros interesados, a quienes les llega la información y pueden eventualmente 
+hacerse con un bien cercano a sus domicilios o que les resulte de interés.
+
+Lo que hace es descargar los edictos judiciales, filtrar los datos (para eso usa tecnicas de web_scrapping e inteligencia artificial)
+Crea una tabla que se muestra una imagen con la información relevante (ver data.png)
+Y luego un bot lo publica en instagram.
+
+
+	EXPLICACIÓN DEL FUNCIONAMIENTO:
+# El programa se mete en la página del Boletín Oficial de la Nación Argentina.
+
+#Usé una librería de python para scrolear hasta abajo y así desplegar todos los datos de la página. (Selenium)
+
+#Codifiqué para que registre en una variable los elementos que me interesan del HTML y así luego distinguir las subastas publicadas.
+
+#si hay una sola subasta publicada. Hace click y accede a la página con la información del Edicto judicial correspondiente.
+#seguidamente guarda el contenido del texto relevante en una variable.
+
+#si hay mas de una subasta (al Igual que en el otro caso) entra en la primera publicación y guarda en una variable la información correspondiente
+pero luego clickea en una solapa que direcciona a una página donde sólo figuran los remates judiciales de la fecha.
+#guarda la URL correspondiente a la página mencionada y se cierra.
+
+((intenté trabajar desde la URL guardada, pero me pareció más rápido que volviera a trabajar sobre la URL del boletín oficial original del principio))
+
+#hice una función que entra en cada link y guarda los edictos restantes.
+                
+#De todo esto me queda al final una lista --> "textos" que guarda la información de los EDICTOS. Cada EDICTO judicial es un elemento.
+Y a cada elemento luego lo proceso mediante una función que utiliza la api de OPEN IA para extraer la información relevante.
+
+# Defino la FUNCIÓN que procesa los edictos con IA.
+#esta función va agregando a 4 listas la información relevante.
+
+#Luego creo una función que convierta las listas en diccionarios.
+Y
+#creo un DataFrame a partir de los diccionarios.
+
+#creo una imagen con un cuadro que sea conforme el data frame. 
+Con al aspect ratio de instagram.
+Y lo exporta en una imagen "data.png".
+
+# Si bien no lo desarrollé, era parte de la idea original que se guardaran las cordenadas de geolocalización para generar una imagen un mapa
+ubicando a cada inmueble objete de las subastas.
+
+# Luego cree un bot que hace el log in de instagram.
+Y debería subir la foto del cuadro creado.
+Sin embargo, esta parte todavía no logré que funcione adecuadamente, ya que cambian los números de los paths HTML de instagram 
+así que eso lo dejo al final del código comentado.
+#sube una foto. Y dsps sube la otra.
+
+FIN.
+
+
+
